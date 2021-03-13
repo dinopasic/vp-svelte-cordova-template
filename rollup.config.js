@@ -11,6 +11,9 @@ let publicFolder = 'public';
 if (process.env.CORDOVA_PLATFORM) {
 	publicFolder = `${cordovaFolder}/www`
 }
+if (process.env.CORDOVA_PLATFORM == 'browser') {
+	publicFolder = `${cordovaFolder}/platforms/browser/www`
+}
 
 console.log(`publicFolder is ${publicFolder}`)
 
