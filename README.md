@@ -1,12 +1,12 @@
 
-# Svelte Cordova template
+# Viewpoint Svelte Cordova app template
 
-This is a project template for [Svelte](https://svelte.dev) apps running inside cordova apps. It lives at https://github.com/syonip/svelte-cordova-template.
+This is a project template for [Svelte](https://svelte.dev) apps running inside cordova apps. It lives at https://github.com/dinopasic/vp-svelte-cordova-template.
 
 To create a new project based on this template using [degit](https://github.com/Rich-Harris/degit):
 
 ```bash
-npx degit syonip/svelte-cordova-template svelte-cordova-app
+npx degit dinopasic/vp-svelte-cordova-template ViewpointDeviceApp
 ```
 
 *Note that you will need to have [Node.js](https://nodejs.org) installed.*
@@ -17,7 +17,7 @@ npx degit syonip/svelte-cordova-template svelte-cordova-app
 Install the dependencies...
 
 ```bash
-cd svelte-cordova-app
+cd ViewpointDeviceApp
 npm install
 ```
 
@@ -31,8 +31,20 @@ npm run dev
 
 ```bash
 cd src-cordova
-cordova platform add android/ios
+cordova platform add browser/android/ios
 ```
+## Develop on your browser with hot reload
+
+Back in the root folder:
+```bash
+npm run dev-browser
+```
+
+This will run the cordova project with a web view pointing localhost:5000.
+
+You should see the message `Cordova deviceready fired!` if cordova loaded correctly.
+
+Try to change something in App.svelte, and you should see the content reload in your device.
 
 ## Develop on your device with hot reload
 

@@ -15,7 +15,7 @@
   },
   "dependencies": {
     "sirv-cli": "^0.4.4",
-    "svelte-cordova": "^1.0.6"
+    "svelte-cordova": "github:dinopasic/vp-svelte-cordova"
   },
   "scripts": {
     "build": "rollup -c",
@@ -33,6 +33,11 @@
     "bundle-ios": "cross-env CORDOVA_PLATFORM=ios CORDOVA_PROD=true npm run build",
     "build-ios": "cross-env CORDOVA_PLATFORM=ios CORDOVA_PROD=true npm run build-ios-subtask",
     "build-ios-subtask": "npm run build && cd src-cordova && cordova build ios",
-    "cordova-run-ios": "cd src-cordova && cordova run ios"
+    "cordova-run-ios": "cd src-cordova && cordova run ios",
+    "dev-browser": "cross-env CORDOVA_PLATFORM=browser run-p serve:cordova autobuild cordova-run-browser",
+    "bundle-browser": "cross-env CORDOVA_PLATFORM=browser CORDOVA_PROD=true npm run build",
+    "build-browser": "cross-env CORDOVA_PLATFORM=browser CORDOVA_PROD=true npm run build-browser-subtask",
+    "build-browser-subtask": "npm run build && cd src-cordova && cordova build browser",
+    "cordova-run-browser": "cd src-cordova && cordova run browser --port=5000"
   }
 }
