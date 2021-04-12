@@ -2,20 +2,21 @@
   "name": "svelte-app",
   "version": "1.0.0",
   "devDependencies": {
-    "cross-env": "^5.2.0",
-    "fs-extra": "^8.1.0",
+    "cross-env": "^7.0.3",
+    "fs-extra": "^9.1.0",
     "npm-run-all": "^4.1.5",
-    "rollup": "^1.10.1",
+    "rollup": "^2.44.0",
     "rollup-plugin-commonjs": "^9.3.4",
-    "rollup-plugin-livereload": "^1.0.0",
+    "rollup-plugin-css-only": "^3.1.0",
+    "rollup-plugin-livereload": "^2.0.0",
     "rollup-plugin-node-resolve": "^4.2.3",
-    "rollup-plugin-svelte": "^5.0.3",
-    "rollup-plugin-terser": "^4.0.4",
-    "svelte": "^3.0.0"
+    "rollup-plugin-svelte": "^7.1.0",
+    "rollup-plugin-terser": "^7.0.2",
+    "svelte": "^3.37.0"
   },
   "dependencies": {
-    "sirv-cli": "^0.4.4",
-    "svelte-cordova": "github:dinopasic/vp-svelte-cordova"
+    "sirv-cli": "^1.0.11",
+    "vp-svelte-cordova": "github:dinopasic/vp-svelte-cordova"
   },
   "scripts": {
     "build": "rollup -c",

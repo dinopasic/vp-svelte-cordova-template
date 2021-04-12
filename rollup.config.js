@@ -3,11 +3,16 @@ import resolve from 'rollup-plugin-node-resolve';
 import commonjs from 'rollup-plugin-commonjs';
 import livereload from 'rollup-plugin-livereload';
 import { terser } from 'rollup-plugin-terser';
+import css from 'rollup-plugin-css-only';
+
+console.log('process.env.CORDOVA_PLATFORM');
+console.log(process.env.CORDOVA_PLATFORM);
 
 const production = !process.env.ROLLUP_WATCH;
 
 const cordovaFolder = 'src-cordova';
 let publicFolder = 'public';
+let publicBrowserFolder = 'public';
 if (process.env.CORDOVA_PLATFORM) {
 	publicFolder = `${cordovaFolder}/www`
 }
@@ -15,26 +20,39 @@ if (process.env.CORDOVA_PLATFORM == 'browser') {
 	publicFolder = `${cordovaFolder}/platforms/browser/www`
 }
 
-console.log(`publicFolder is ${publicFolder}`)
-
 export default {
 	input: 'src/main.js',
-	output: {
+	output: [{
 		sourcemap: true,
 		format: 'iife',
 		name: 'app',
 		file: `${publicFolder}/bundle.js`
-	},
+	}/*,
+	{
+		sourcemap: true,
+		format: 'iife',
+		name: 'app',
+		file: `${publicBrowserFolder}/bundle.js`
+	}*/],
 	plugins: [
 		svelte({
-			// enable run-time checks when not in production
-			dev: !production,
-			// we'll extract any component CSS out into
-			// a separate file — better for performance
-			css: css => {
-				css.write(`${publicFolder}/bundle.css`);
+			compilerOptions: {
+				// enable run-time checks when not in production
+				dev: !production
 			}
+			// // enable run-time checks when not in production
+			// dev: !production,
+			// // we'll extract any component CSS out into
+			// // a separate file — better for performance
+			// css: css => {
+			// 	css.write(`${publicFolder}/bundle.css`);
+			// 	//css.write(`${publicBrowserFolder}/bundle.css`);
+			// }
+			// //emitCss: true,
 		}),
+		// we'll extract any component CSS out into
+		// a separate file - better for performance
+		css({ output: `bundle.css` }, { output: `${publicBrowserFolder}/bundle.css` }),
 
 		// If you have external dependencies installed from
 		// npm, you'll most likely need these plugins. In
